@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import requests
 import json
-from herald.baseplugin import HeraldPlugin
+from src.herald.baseplugin import HeraldPlugin
 
 
 class HTTPPlugin(HeraldPlugin):

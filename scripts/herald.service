@@ -1,0 +1,25 @@
+# Runs the Herald backend management service to let HAProxy know which backends are available.
+# Configured by files in /etc/herald
+[Install]
+WantedBy = multi-user.target
+
+[Service]
+CPUAccounting = True
+Type=simple
+User=herald
+Group=daemon
+WorkingDirectory=/opt/haproxy-herald
+# Run herald with Python 3.5 and venv
+# Option -l selects the log level: debug, info, warning, error...
+ExecStart=/opt/haproxy-herald/venv/bin/herald -c /etc/herald/config.yml -l info
+Restart=on-failure
+RestartSec=10
+User = herald
+Group = daemon
+
+[Unit]
+After = syslog.target
+After = network.target
+Description = Herald is a server monitor which informs HAProxy
+Documentation = https://github.com/CriticalOptimisation/herald#readme
+# 

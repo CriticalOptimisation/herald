@@ -1,0 +1,53 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools>=67.0", "setuptools_scm[toml]>=7.1"]
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md"]}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+herald = ["plugins/*.py"]
+
+[tool.setuptools.exclude-package-data]
+herald = [".idea"]
+
+[tool.setuptools_scm]
+fallback_version = "0.0.0-dev"
+write_to = "src/herald/_version.py"
+
+[project]
+authors = [
+    {name = "Raghu Udiyar", email = "raghusiddarth@gmail.com"},
+    {name = "CalCool Studios", email = "devops@calcool.ai"},
+]
+description = "Haproxy load feedback and check agent"
+dynamic = ["version"]
+license = {file = "LICENSE.md"}
+name = "herald"
+readme = {file = "README.md", content-type = "text/markdown"}
+dependencies = [
+    "gevent~=23.9",
+    "pyyaml~=6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "black",
+  "build",
+  "dapperdata",
+  "glom",
+  "isort",
+  "mypy",
+  "pip-tools",
+  "pytest",
+  "pytest-cov",
+  "pytest-pretty",
+  "ruamel.yaml",
+  "toml-sort",
+]
+
+[project.scripts]
+herald = "herald:herald.main"

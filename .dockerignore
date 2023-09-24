@@ -1,0 +1,14 @@
+# Ignore everything by default.
+*
+
+# Explicitly define directories and files to pass into docker.
+!/src/herald
+!/src/plugins
+!/.python-version
+!/docker
+!/LICENSE
+!/makefile
+!/pyproject.toml
+!/README.md
+!/setup.*
+!/requirements*

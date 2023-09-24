@@ -16,6 +16,6 @@ if sys.gettrace() is None:
 # Import public libraries
 
 # Import application modules
-from herald.herald import main
+from src.herald.herald import main
 
 main()
